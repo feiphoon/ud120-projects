@@ -26,9 +26,15 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 
 classifier = GaussianNB()
-classifier.fit(features_train, labels_train)
 
+t0 = time()
+classifier.fit(features_train, labels_train)
+print("Training time:", round(time()-t0, 3), "s")
+
+t1 = time()
 pred = classifier.predict(features_test)
+print("Prediction time:", round(time()-t1, 3), "s")
+
 accuracy = accuracy_score(pred, labels_test)
 
 print(accuracy)
@@ -36,6 +42,8 @@ print(accuracy)
 # Output
 # no. of Chris training emails: 7936
 # no. of Sara training emails: 7884
+# Training time: 1.502 s
+# Prediction time: 0.161 s
 # 0.973265073948
 
 #########################################################
